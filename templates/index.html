@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f5e9">
+  <meta name="description" content="TouchGrass AI creates simple outdoor missions using local AI.">
+  <title>TouchGrass AI — Find Your Outside</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="{{ url_for('static', filename='js/app.js') }}" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="TouchGrass AI home">
+      <span class="brand-icon">✳</span>
+      <span>touchgrass<span class="brand-ai">.ai</span></span>
+    </a>
+    <span class="local-badge"><span class="status-dot"></span> LOCAL AI</span>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">A LITTLE LESS SCROLLING. A LITTLE MORE LIVING.</p>
+      <h1>Your world is<br>waiting <span>outside.</span></h1>
+      <p class="hero-copy">
+        Tell us how much time you have. Your local AI will find you
+        a small adventure worth stepping out for.
+      </p>
+      <div class="hero-note">
+        <span>☀</span>
+        No perfect plan needed. Just start somewhere.
+      </div>
+    </section>
+
+    <section class="planner panel" aria-labelledby="planner-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">YOUR NEXT LITTLE ADVENTURE</p>
+          <h2 id="planner-title">Make me a mission</h2>
+        </div>
+        <span class="heading-leaf" aria-hidden="true">🌿</span>
+      </div>
+
+      <form id="mission-form">
+        <fieldset>
+          <legend>How much time do you have?</legend>
+          <div class="choice-row">
+            <label class="choice">
+              <input type="radio" name="minutes" value="15" checked>
+              <span><strong>15 min</strong><small>A tiny reset</small></span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="minutes" value="30">
+              <span><strong>30 min</strong><small>A little explore</small></span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="minutes" value="60">
+              <span><strong>60 min</strong><small>Go further</small></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label for="interest">What sounds good today?</label>
+          <select id="interest" name="interest">
+            <option value="nature">Explore nature</option>
+            <option value="walking">Walking and mindful movement</option>
+            <option value="birdwatching">Birdwatching</option>
+            <option value="gardening">Gardening</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="difficulty">Your experience</label>
+          <select id="difficulty" name="difficulty">
+            <option value="beginner">I'm just starting</option>
+            <option value="easy">I do this sometimes</option>
+            <option value="moderate">Ready for a challenge</option>
+          </select>
+        </div>
+
+        <button class="primary-button" id="generate-button" type="submit">
+          <span>Find my outdoor mission</span><span aria-hidden="true">↗</span>
+        </button>
+        <p class="privacy-note">🔒 Your request stays on this computer when using local Ollama.</p>
+      </form>
+    </section>
+
+    <section id="result-section" class="panel result-panel" hidden aria-live="polite">
+      <div class="result-top">
+        <p class="eyebrow">YOUR OUTDOOR MISSION</p>
+        <span class="result-symbol" aria-hidden="true">🌱</span>
+      </div>
+      <div id="mission-result" class="mission-result"></div>
+      <button id="complete-button" class="secondary-button" type="button">
+        ✓ I completed this mission
+      </button>
+    </section>
+
+    <section class="progress panel">
+      <div>
+        <p class="eyebrow">SMALL STEPS COUNT</p>
+        <h2>Your time outside</h2>
+        <p class="muted">Every little adventure adds up.</p>
+      </div>
+      <div class="progress-stats">
+        <div><strong id="minutes-total">0</strong><span>minutes outside</span></div>
+        <div><strong id="missions-total">0</strong><span>missions done</span></div>
+      </div>
+      <button id="reset-progress" class="text-button" type="button">Reset progress</button>
+    </section>
+
+    <footer>
+      <p>Built to make the screen the shortest part of the adventure.</p>
+      <p>🌿 TouchGrass AI · Powered by local open-weight AI</p>
+    </footer>
+  </main>
+</body>
+</html>
